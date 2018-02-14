@@ -3,16 +3,15 @@
   "version": "1.0.0",
   "description": "nodejs mongodb CRUD web site",
   "main": "server.js",
-  "scripts": {
-    "dev": "nodemon server.js"
-  },
   "author": "frankc60",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "eslint": "^4.17.0",
     "express": "^4.16.2"
   },
   "devDependencies": {
+    "eslint-config-google": "^0.9.1",
     "nodemon": "^1.14.12"
   },
   "scripts": {
