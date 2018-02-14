@@ -1,0 +1,15 @@
+{
+  "name": "crud",
+  "version": "1.0.0",
+  "description": "nodejs mongodb CRUD web site",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "frankc60",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^4.17.0",
+    "express": "^4.16.2"
+  }
+}
