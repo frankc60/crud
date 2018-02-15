@@ -1,12 +1,16 @@
 const express = require('express');
 const bodyParser= require('body-parser')
 const app = express();
+const path = require('path');
 
 const MongoClient = require('mongodb').MongoClient;
 
 
 app.use(bodyParser.urlencoded({extended: true}))
 
+app.set('view engine', 'ejs')
+
+app.set('views', path.join(__dirname, '/app/views'));
 
 console.log("hello world");
 
@@ -21,21 +25,28 @@ console.log("hello world");
 
 
   MongoClient.connect('mongodb://localhost:27017/exampleDb', (err, client) => {
-    if (err) return console.log(err)
+    if (err) return console.log(err + ". maybe you need to run from cmdline: sudo service mongod start")
     let db;
     db = client.db('star-wars-quotes') // whatever your database name is
     app.listen(3000, () => {
       console.log('listening on 3000, mongodb connected.')
     })
 
+ 
+
     app.get('/', (req, res) => {
-      //res.send('Hello World')
-      db.collection('quotes').find().toArray(function(err, results) {
-        console.log(results)
-        // send HTML file populated with quotes here
+      db.collection('quotes').find().toArray((err, result) => {
+        if (err) return console.log(err)
+        // renders index.ejs
+        res.render('index.ejs', {quotes: result})
+        // res.sendFile(__dirname + '/public/html/index.html');
       })
-      res.sendFile(__dirname + '/public/html/index.html');
-    });
+    })
+
+
+
+
+
 
     app.post('/quotes', (req, res) => {
       console.log(req.body);
