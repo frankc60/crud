@@ -7,7 +7,7 @@
 <body>
 nodejs mongodb 
 
-<form action="/quotes" method="POST">
+
   <ul>
   <% for(var i=0; i<quotes.length; i++) {%>
     <li>
@@ -17,15 +17,13 @@ nodejs mongodb
   <% } %>
   </ul>
   
-<input type="radio" name="a1"/>ADD<br/>
-  <input type="radio" name="a1"/>DELETE<br/>
-  <input type="radio" name="a1"/>UPDATE<br/>
   <br/>
   <br/>
-    <input type="text" placeholder="name" name="name">
-    <input type="text" placeholder="quote" name="quote">
-    <br/><br/><button type="submit">Submit</button>
-  </form>
+
+    <input type="text" placeholder="name" name="name" id="name">
+    <input type="text" placeholder="quote" name="quote" id="quote">
+    <br/><br/><button id="add">Add</button>
+
 
 
 
@@ -33,6 +31,12 @@ nodejs mongodb
     <h2>Replace last quote written by Master Yoda with a quote written by Darth Vadar</h2>
     <button id="update"> Darth Vadar invades! </button>
   </div>
+
+  <div>
+    <h2>Delete Darth Vadar's first quote</h2>
+    <button id="delete"> Delete first Darth Vadar quote </button>
+  </div>
+
 
 <script src="js/main.js"></script>
 </body>
