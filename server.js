@@ -72,6 +72,7 @@ console.log("hello world");
       db.collection('quotes').find().toArray((err, result) => {
         if (err) return console.log(err);
         // renders index.ejs
+        console.log(result);
         res.render('index.ejs', {quotes: result});
         // res.sendFile(__dirname + '/public/html/index.html');
       });
@@ -84,13 +85,13 @@ console.log("hello world");
 
 
     app.post('/quotes', (req, res) => {
-      console.log(req.body);
+      console.log(JSON.stringify(req.body));
     
-    db.collection('quotes').save(req.body, (err, result) => {
+    db.collection('quotes').insertOne(req.body, (err, result) => {
       if (err) return console.log("ERROR:" + err);
   
-      console.log(result + 'saved to database');
-      res.redirect('/');
+      console.log('saved to database');
+      res.send(result);
     });
   });
 

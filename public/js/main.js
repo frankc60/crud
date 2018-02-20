@@ -21,12 +21,13 @@ update.addEventListener('click', function () {
 
 });
 //---------------------------------------------------------------
-let fadd = document.getElementById('add');
-let fname = document.getElementById('name');
-let fquote = document.getElementById('quote');
-
+ let fadd = document.getElementById('add');
 
 fadd.addEventListener('click', function () {
+ 
+  let fname = document.getElementById('fname').value;
+  let fquote = document.getElementById('fquote').value;
+  //console.log("fname:" + fname);
   // Send PUT Request here
   fetch('quotes', {
     method: 'post',
@@ -37,23 +38,21 @@ fadd.addEventListener('click', function () {
     })
   })
   .then(res => {
-    if (res.ok) return res.json()
+    if (res.ok) return res.json();
   })
   .then(data => {
-    console.log(data)
-    window.location.reload(true)
+    console.log(data);
+    window.location.reload(true);
   })
 
 });
 //---------------------------------------------------------------
-var del = document.getElementById('delete')
+var del = document.getElementById('delete');
 
 del.addEventListener('click', function () {
   fetch('quotes', {
     method: 'delete',
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       'name': 'Darth Vader'
     })
